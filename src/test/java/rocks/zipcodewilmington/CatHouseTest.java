@@ -86,7 +86,7 @@ public class CatHouseTest {
         CatHouse.add(cat3);
         Cat expected = null;
         CatHouse.remove(cat2);
-        Cat actual = CatHouse.getCatById(2);
+        Cat actual = CatHouse.getCatById(1);
         Assert.assertEquals(expected, actual);
         CatHouse.clear();
     }
