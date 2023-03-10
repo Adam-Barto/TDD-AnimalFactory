@@ -124,9 +124,9 @@ public class CatHouseTest {
         int expected = 3;
         Cat cat = AnimalFactory.createCat("Jack", Date.valueOf("1995-03-21"));
         CatHouse.add(cat);
-        Cat cat1 = AnimalFactory.createCat("Chelsie", Date.valueOf("2001-03-21"));
+        Cat cat1 = AnimalFactory.createCat("Rouwell", Date.valueOf("2001-03-21"));
         CatHouse.add(cat1);
-        Cat cat2 = AnimalFactory.createCat("Rouwell", Date.valueOf("2001-03-21"));
+        Cat cat2 = AnimalFactory.createCat("Chelsie", Date.valueOf("2001-03-21"));
         CatHouse.add(cat2);
         int actual = CatHouse.getNumberOfCats();
         Assert.assertEquals(expected,actual);
