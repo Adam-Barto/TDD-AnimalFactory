@@ -23,7 +23,7 @@ public class CatTest {
     public void constructorTest() {
         // Given (cat data)
         String givenName = "Zula";
-        Date givenBirthDate = new Date();
+        Date givenBirthDate = new Date(2001,12,11);
         Integer givenId = 0;
 
         // When (a cat is constructed)
@@ -38,6 +38,38 @@ public class CatTest {
         Assert.assertEquals(givenName, retrievedName);
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
+    }
+    @Test
+    public void testSetName(){
+        String givenName = "Jelly";
+        Date birthDay = new Date(2021,10,03);
+        Cat cat = new Cat("", birthDay,0);
+
+        cat.setName(givenName);
+        String expected = givenName;
+
+        Assert.assertEquals(expected,givenName);
+    }
+
+    @Test
+    public void testspeak(){
+        String actual = "meow!";
+        Date birthDay = new Date(2021,10,03);
+        Cat cat = new Cat("", birthDay,0);
+
+        String expected = cat.speak();;
+        Assert.assertEquals(expected,actual);
+    }
+    @Test
+    public void testSetBirthDate(){
+        Date expected = new Date(2021,10,03);
+        Date birthDay = new Date();
+        Cat cat = new Cat("", birthDay,0);
+
+        cat.setBirthDate(expected);
+
+        Date actual = cat.getBirthDate();
+        Assert.assertEquals(expected,actual);
     }
 
 }
