@@ -65,4 +65,29 @@ public class CatHouseTest {
         Assert.assertEquals(expected, actual);
         CatHouse.clear();
     }
+
+    @Test
+    public void testRemoveByCat() {
+        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        CatHouse.add(cat1);
+        Cat expected = null;
+        CatHouse.remove(cat1);
+        Cat actual = CatHouse.getCatById(0);
+        Assert.assertEquals(expected, actual);
+        CatHouse.clear();
+    }
+    @Test
+    public void testRemoveByCat2() {
+        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        CatHouse.add(cat1);
+        Cat cat2 = AnimalFactory.createCat("Libby", Date.valueOf("2013-12-12"));
+        CatHouse.add(cat2);
+        Cat cat3 = AnimalFactory.createCat("Tubby", Date.valueOf("2015-04-04"));
+        CatHouse.add(cat3);
+        Cat expected = null;
+        CatHouse.remove(cat2);
+        Cat actual = CatHouse.getCatById(2);
+        Assert.assertEquals(expected, actual);
+        CatHouse.clear();
+    }
 }
