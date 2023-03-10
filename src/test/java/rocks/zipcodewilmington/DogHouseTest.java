@@ -2,13 +2,11 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.w3c.dom.ls.LSOutput;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
 import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
 
-import java.sql.Date;
-import java.sql.SQLOutput;
+import java.util.Date;
 
 /**
  * @author leon on 4/19/18.
@@ -25,7 +23,7 @@ public class DogHouseTest {
         // Given (some)
         int expected = 1;
         String name = "Milo";
-        Date birthDate = Date.valueOf("2018-10-03");
+        Date birthDate = new Date();
         Dog animal = AnimalFactory.createDog(name, birthDate);
 
         // When
@@ -40,8 +38,8 @@ public class DogHouseTest {
     @Test
     public void testAddDog() {
         String name = "Wren";
-        Date date = Date.valueOf("2018-10-03");
-        Dog expected = AnimalFactory.createDog(name, date);
+        Date birthDate = new Date(2001,1,4);
+        Dog expected = AnimalFactory.createDog(name, birthDate);
 
         DogHouse.add(expected);
 
@@ -53,8 +51,8 @@ public class DogHouseTest {
     @Test
     public void testRemoveDogId() {
         String name = "Wren";
-        Date date = Date.valueOf("2018-10-03");
-        Dog animal = AnimalFactory.createDog(name, date);
+        Date birthDate = new Date(2001,1,4);
+        Dog animal = AnimalFactory.createDog(name, birthDate);
         DogHouse.add(animal);
         Dog expected = null;
 
@@ -68,8 +66,8 @@ public class DogHouseTest {
     @Test
     public void testRemoveDog() {
         String name = "Wren";
-        Date date = Date.valueOf("2018-10-03");
-        Dog animal = AnimalFactory.createDog(name, date);
+        Date birthDate = new Date(2001,1,4);
+        Dog animal = AnimalFactory.createDog(name, birthDate);
         DogHouse.add(animal);
         Dog expected = null;
 
@@ -83,8 +81,8 @@ public class DogHouseTest {
     @Test
     public void getDogById() {
         String name = "Wren";
-        Date date = Date.valueOf("2018-10-03");
-        Dog animal = AnimalFactory.createDog(name, date);
+        Date birthDate = new Date(2001,1,4);
+        Dog animal = AnimalFactory.createDog(name, birthDate);
         Dog expected = animal;
 
         DogHouse.add(animal);

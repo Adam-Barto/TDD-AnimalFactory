@@ -6,7 +6,7 @@ import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
 import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @author leon on 4/19/18.
@@ -19,7 +19,7 @@ public class CatHouseTest {
     // TODO - Create tests for `Integer getNumberOfCats()`
     @Test
     public void testAdd() {
-        Cat expected = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat expected = AnimalFactory.createCat("Kirby", new Date(2001,02,03));
         //CatHouse CH = new CatHouse(); //Initilizing a new CatHouse doesn't seem to work
         CatHouse.add(expected);
         Cat actual = CatHouse.getCatById(0);
@@ -28,13 +28,13 @@ public class CatHouseTest {
     }
     @Test
     public void testAdd2() {
-        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat cat1 = AnimalFactory.createCat("Kirby", new Date(2021,3,4));
         CatHouse.add(cat1);
 
-        Cat expected = AnimalFactory.createCat("Tubby", Date.valueOf("2015-04-04"));
+        Cat expected = AnimalFactory.createCat("Tubby", new Date(2015,04,04));
         CatHouse.add(expected);
 
-        Cat cat2 = AnimalFactory.createCat("Libby", Date.valueOf("2012-12-12"));
+        Cat cat2 = AnimalFactory.createCat("Libby", new Date(2012,12,12));
         CatHouse.add(cat2);
 
         Cat actual = CatHouse.getCatById(1); //Need to space the things out or it runs too fast to count correctly.
@@ -43,7 +43,7 @@ public class CatHouseTest {
     }
     @Test
     public void testRemove() {
-        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat cat1 = AnimalFactory.createCat("Kirby", new Date(2021,3,4));
         CatHouse.add(cat1);
         Cat expected = null;
         CatHouse.remove(0);
@@ -53,11 +53,11 @@ public class CatHouseTest {
     }
     @Test
     public void testRemove2() {
-        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat cat1 = AnimalFactory.createCat("Kirby", new Date(2021,3,4));
         CatHouse.add(cat1);
-        Cat cat2 = AnimalFactory.createCat("Libby", Date.valueOf("2013-12-12"));
+        Cat cat2 = AnimalFactory.createCat("Libby", new Date(2013,12,12));
         CatHouse.add(cat2);
-        Cat cat3 = AnimalFactory.createCat("Tubby", Date.valueOf("2015-04-04"));
+        Cat cat3 = AnimalFactory.createCat("Tubby", new Date(2015,04,04));
         CatHouse.add(cat3);
         Cat expected = null;
         CatHouse.remove(2);
@@ -68,7 +68,7 @@ public class CatHouseTest {
 
     @Test
     public void testRemoveByCat() {
-        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat cat1 = AnimalFactory.createCat("Kirby", new Date(2021,3,4));
         CatHouse.add(cat1);
         Cat expected = null;
         CatHouse.remove(cat1);
@@ -78,11 +78,11 @@ public class CatHouseTest {
     }
     @Test
     public void testRemoveByCat2() {
-        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat cat1 = AnimalFactory.createCat("Kirby", new Date(2021,3,4));
         CatHouse.add(cat1);
-        Cat cat2 = AnimalFactory.createCat("Libby", Date.valueOf("2013-12-12"));
+        Cat cat2 = AnimalFactory.createCat("Libby", new Date(2013,12,12));
         CatHouse.add(cat2);
-        Cat cat3 = AnimalFactory.createCat("Tubby", Date.valueOf("2015-04-04"));
+        Cat cat3 = AnimalFactory.createCat("Tubby", new Date(2015,4,4));
         CatHouse.add(cat3);
         Cat expected = null;
         CatHouse.remove(cat2);
@@ -92,7 +92,7 @@ public class CatHouseTest {
     }
     @Test
     public void testGetCatByID() {
-        Cat expected = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat expected = AnimalFactory.createCat("Kirby", new Date(2021,3,4));
         CatHouse.add(expected);
         Cat actual = CatHouse.getCatById(0);
         Assert.assertEquals(expected, actual);
@@ -100,11 +100,11 @@ public class CatHouseTest {
     }
     @Test
     public void testGetCatByID2() {
-        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        Cat cat1 = AnimalFactory.createCat("Kirby", new Date(2021,3,4));
         CatHouse.add(cat1);
-        Cat cat2 = AnimalFactory.createCat("Libby", Date.valueOf("2013-12-12"));
+        Cat cat2 = AnimalFactory.createCat("Libby", new Date(2013,12,12));
         CatHouse.add(cat2);
-        Cat expected = AnimalFactory.createCat("Tubby", Date.valueOf("2015-04-04"));
+        Cat expected = AnimalFactory.createCat("Tubby", new Date(2015,4,4));
         CatHouse.add(expected);
         Cat actual = CatHouse.getCatById(2);
         Assert.assertEquals(expected, actual);
@@ -113,7 +113,7 @@ public class CatHouseTest {
     @Test
     public void testGetNumberOfCats(){
         int expected = 1;
-        Cat cat = AnimalFactory.createCat("Chelsie", Date.valueOf("1995-03-21"));
+        Cat cat = AnimalFactory.createCat("Chelsie", new Date(1995,03,21));
         CatHouse.add(cat);
         int actual = CatHouse.getNumberOfCats();
         Assert.assertEquals(expected,actual);
@@ -122,11 +122,11 @@ public class CatHouseTest {
     @Test
     public void testGetNumberOfCats1(){
         int expected = 3;
-        Cat cat = AnimalFactory.createCat("Jack", Date.valueOf("1995-03-21"));
+        Cat cat = AnimalFactory.createCat("Jack", new Date(1995,03,21));
         CatHouse.add(cat);
-        Cat cat1 = AnimalFactory.createCat("Rouwell", Date.valueOf("2001-03-21"));
+        Cat cat1 = AnimalFactory.createCat("Rouwell", new Date(2001,03,21));
         CatHouse.add(cat1);
-        Cat cat2 = AnimalFactory.createCat("Chelsie", Date.valueOf("2001-03-21"));
+        Cat cat2 = AnimalFactory.createCat("Chelsie", new Date(2001,03,21));
         CatHouse.add(cat2);
         int actual = CatHouse.getNumberOfCats();
         Assert.assertEquals(expected,actual);
