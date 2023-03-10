@@ -2,10 +2,10 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.Mammal;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -36,7 +36,7 @@ public class DogTest {
     public void setDateTest() {
         // Given (a name exists and a dog exists)
         Dog dog = new Dog(null, null, null);
-        Date givenDate = new SimpleDateFormat("2001-02-03").get2DigitYearStart();
+        Date givenDate = new Date(2001,12,1);
 
         // When (a dog's name is set to the given name)
         dog.setBirthDate(givenDate);
@@ -57,7 +57,6 @@ public class DogTest {
     @Test
     public void speakTest() {
         // Given (a name exists and a dog exists)
-        System.out.println(new SimpleDateFormat("2001-02-03").get2DigitYearStart());
         String actual = "bark!";
         Dog dog = new Dog(null, null, null);
         String expected = dog.speak();
@@ -66,19 +65,43 @@ public class DogTest {
     @Test
     public void setBirthDateTest() {
         // Given (a name exists and a dog exists)
-        String actual = "bark!";
+        Date expected = new Date(2001,12,1);
         Dog dog = new Dog(null, null, null);
-        String expected = dog.speak();
+        dog.setBirthDate(expected);
+        Date actual = dog.getBirthDate();
         Assert.assertEquals(actual, expected);
     }
     @Test
-    public void eatTest() {
-        // Given (a name exists and a dog exists)
-        String actual = "bark!";
-        Dog dog = new Dog(null, null, null);
-        String expected = dog.speak();
-        Assert.assertEquals(actual, expected);
+    public void testEat(){
+        int expected = 1;
+        Dog dog = new Dog("", new Date(),0);
+        dog.eat(new Food());
+        int actual = dog.getNumberOfMealsEaten();
+        Assert.assertEquals(expected,actual);
     }
 
+    @Test
+    public void testGetId(){
+        int expected = 4;
+        Dog dog = new Dog("", new Date(),4);
 
+        int actual = dog.getId();
+        Assert.assertEquals(expected,actual);
+    }
+    @Test
+    public void testIsInstanceOfAnimal(){
+        boolean expected = true;
+        Dog dog = new Dog("", new Date(),4);
+
+        boolean actual = dog instanceof Animal;
+        Assert.assertEquals(expected,actual);
+    }
+    @Test
+    public void testIsInstanceOfMammal() {
+        boolean expected = true;
+        Dog dog = new Dog("", new Date(), 4);
+
+        boolean actual = dog instanceof Mammal;
+        Assert.assertEquals(expected, actual);
+    }
 }
