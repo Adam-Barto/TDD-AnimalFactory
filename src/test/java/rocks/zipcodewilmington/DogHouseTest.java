@@ -20,21 +20,22 @@ public class DogHouseTest {
     // TODO - Create tests for `Dog getDogById(Integer id)`
     // TODO - Create tests for `Integer getNumberOfDogs()`
 
-//    @Test
-//    public void testGetNumberOfDogs() {
-//        // Given (some)
-//        int expected = 1;
-//        String name = "Milo";
-//        Date birthDate = Date.valueOf("2018-10-03");
-//        Dog animal = AnimalFactory.createDog(name, birthDate);
-//        DogHouse.clear();
-//
-//        // When
-//        DogHouse.add(animal);
-//
-//        // Then
-//        DogHouse.getNumberOfDogs();
-//    }
+    @Test
+    public void testGetNumberOfDogs() {
+        // Given (some)
+        int expected = 1;
+        String name = "Milo";
+        Date birthDate = Date.valueOf("2018-10-03");
+        Dog animal = AnimalFactory.createDog(name, birthDate);
+
+        // When
+        DogHouse.add(animal);
+        int actual = DogHouse.getNumberOfDogs();
+        // Then
+
+        Assert.assertEquals(expected,actual);
+        DogHouse.clear();
+    }
 
     @Test
     public void testAddDog() {
