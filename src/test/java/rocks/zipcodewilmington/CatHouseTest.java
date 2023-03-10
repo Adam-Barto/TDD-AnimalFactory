@@ -90,4 +90,47 @@ public class CatHouseTest {
         Assert.assertEquals(expected, actual);
         CatHouse.clear();
     }
+    @Test
+    public void testGetCatByID() {
+        Cat expected = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        CatHouse.add(expected);
+        Cat actual = CatHouse.getCatById(0);
+        Assert.assertEquals(expected, actual);
+        CatHouse.clear();
+    }
+    @Test
+    public void testGetCatByID2() {
+        Cat cat1 = AnimalFactory.createCat("Kirby", Date.valueOf("2021-10-03"));
+        CatHouse.add(cat1);
+        Cat cat2 = AnimalFactory.createCat("Libby", Date.valueOf("2013-12-12"));
+        CatHouse.add(cat2);
+        Cat expected = AnimalFactory.createCat("Tubby", Date.valueOf("2015-04-04"));
+        CatHouse.add(expected);
+        Cat actual = CatHouse.getCatById(2);
+        Assert.assertEquals(expected, actual);
+        CatHouse.clear();
+    }
+    @Test
+    public void testGetNumberOfCats(){
+        int expected = 1;
+        Cat cat = AnimalFactory.createCat("Chelsie", Date.valueOf("1995-03-21"));
+        CatHouse.add(cat);
+        int actual = CatHouse.getNumberOfCats();
+        Assert.assertEquals(expected,actual);
+        CatHouse.clear();
+    }
+    @Test
+    public void testGetNumberOfCats1(){
+        int expected = 3;
+        Cat cat = AnimalFactory.createCat("Jack", Date.valueOf("1995-03-21"));
+        CatHouse.add(cat);
+        Cat cat1 = AnimalFactory.createCat("Chelsie", Date.valueOf("2001-03-21"));
+        CatHouse.add(cat1);
+        Cat cat2 = AnimalFactory.createCat("Rouwell", Date.valueOf("2001-03-21"));
+        CatHouse.add(cat2);
+        int actual = CatHouse.getNumberOfCats();
+        Assert.assertEquals(expected,actual);
+        CatHouse.clear();
+    }
+
 }
